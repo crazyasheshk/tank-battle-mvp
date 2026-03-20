@@ -1,6 +1,0 @@
-[gd_resource type="FontFile" load_steps=2 format=3]
-
-[ext_resource type="FontFile" uid="uid://xg0rev64ic4p" path="res://fonts/NotoSansSC-Regular.ttf" id="1_font"]
-
-[resource]
-fallback/0 = ExtResource("1_font")
