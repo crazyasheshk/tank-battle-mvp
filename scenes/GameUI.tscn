@@ -1,9 +1,11 @@
-[gd_scene load_steps=2 format=3 uid="uid://game_ui"]
+[gd_scene load_steps=3 format=3 uid="uid://game_ui"]
 
 [ext_resource type="Script" path="res://scripts/GameUI.gd" id="1_ui"]
+[ext_resource type="Theme" uid="uid://dqkm1x8ypvnfw" path="res://themes/game_theme.tres" id="2_theme"]
 
 [node name="GameUI" type="CanvasLayer"]
 layer = 10
+theme = ExtResource("2_theme")
 script = ExtResource("1_ui")
 
 [node name="TopBar" type="Panel" parent="."]
