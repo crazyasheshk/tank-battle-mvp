@@ -62,21 +62,6 @@ var has_shotgun: bool = false
 func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	time_remaining = game_time_limit
-	
-	# 设置默认字体
-	_setup_default_font()
-
-
-func _setup_default_font() -> void:
-	# 加载中文字体并设置为默认
-	var font := load("res://fonts/NotoSansSC-Regular.ttf")
-	if font:
-		var theme := Theme.new()
-		theme.default_font = font
-		theme.default_font_size = 16
-		# 设置为项目默认主题
-		ProjectSettings.set_setting("gui/theme/custom", "res://themes/game_theme.tres")
-		print("✅ 中文字体已加载")
 
 
 func _process(delta: float) -> void:
