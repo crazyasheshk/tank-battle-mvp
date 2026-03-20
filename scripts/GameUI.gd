@@ -20,8 +20,13 @@ extends CanvasLayer
 @onready var _victory_time: Label = $VictoryPanel/Time
 @onready var _victory_rank: Label = $VictoryPanel/Rank
 
+var _chinese_font: FontFile
+
 
 func _ready() -> void:
+	# 加载中文字体
+	_load_chinese_font()
+	
 	GameManager.score_changed.connect(_on_score_changed)
 	GameManager.game_ended.connect(_show_game_over)
 	GameManager.game_victory.connect(_show_victory)
@@ -40,6 +45,24 @@ func _ready() -> void:
 	_update_hint()
 	_update_level()
 	_update_powerup_status()
+
+
+func _load_chinese_font() -> void:
+	var font := load("res://fonts/NotoSansSC-Regular.ttf") as FontFile
+	if font:
+		_chinese_font = font
+		# 为所有 Label 和 Button 设置字体
+		_set_font_recursive(self)
+		print("✅ 游戏界面字体已设置")
+
+
+func _set_font_recursive(node: Node) -> void:
+	for child in node.get_children():
+		if child is Label or child is Button or child is LineEdit:
+			if _chinese_font:
+				child.add_theme_font_override("font", _chinese_font)
+		if child.get_child_count() > 0:
+			_set_font_recursive(child)
 
 
 func _update_player_name() -> void:
