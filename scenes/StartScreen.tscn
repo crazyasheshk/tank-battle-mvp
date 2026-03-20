@@ -1,7 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://start_screen"]
 
 [ext_resource type="Script" path="res://scripts/StartScreen.gd" id="1_start"]
-[ext_resource type="Theme" uid="uid://dqkm1x8ypvnfw" path="res://themes/game_theme.tres" id="2_theme"]
 
 [node name="StartScreen" type="Control"]
 layout_mode = 3
@@ -10,7 +9,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = ExtResource("2_theme")
 script = ExtResource("1_start")
 
 [node name="Background" type="ColorRect" parent="."]
