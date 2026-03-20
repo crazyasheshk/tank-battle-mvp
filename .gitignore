@@ -19,10 +19,10 @@ mono_crash.*.json
 *~
 .directory
 
-# Export builds
-exports/
+# Export builds (except web)
+exports/*
+!exports/web/
 *.exe
-*.pck
 *.zip
 *.dmg
 *.app
