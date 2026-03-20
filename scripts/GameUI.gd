@@ -2,6 +2,9 @@
 ## 游戏界面控制器
 extends CanvasLayer
 
+# 预加载字体路径
+const CHINESE_FONT_PATH := "res://fonts/NotoSansSC-Regular.ttf"
+
 @onready var _health_label: Label = $TopBar/HealthLabel
 @onready var _score_label: Label = $TopBar/ScoreLabel
 @onready var _timer_label: Label = $TopBar/TimerLabel
@@ -20,12 +23,10 @@ extends CanvasLayer
 @onready var _victory_time: Label = $VictoryPanel/Time
 @onready var _victory_rank: Label = $VictoryPanel/Rank
 
-var _chinese_font: FontFile
-
 
 func _ready() -> void:
-	# 加载中文字体
-	_load_chinese_font()
+	# 设置中文字体
+	_setup_chinese_font()
 	
 	GameManager.score_changed.connect(_on_score_changed)
 	GameManager.game_ended.connect(_show_game_over)
@@ -47,22 +48,19 @@ func _ready() -> void:
 	_update_powerup_status()
 
 
-func _load_chinese_font() -> void:
-	var font := load("res://fonts/NotoSansSC-Regular.ttf") as FontFile
+func _setup_chinese_font() -> void:
+	var font := ResourceLoader.load(CHINESE_FONT_PATH, "FontFile", ResourceLoader.CACHE_MODE_REPLACE) as FontFile
 	if font:
-		_chinese_font = font
-		# 为所有 Label 和 Button 设置字体
-		_set_font_recursive(self)
-		print("✅ 游戏界面字体已设置")
+		_apply_font_recursive(self, font)
+		print("✅ 游戏界面字体已应用")
 
 
-func _set_font_recursive(node: Node) -> void:
+func _apply_font_recursive(node: Node, font: FontFile) -> void:
 	for child in node.get_children():
 		if child is Label or child is Button or child is LineEdit:
-			if _chinese_font:
-				child.add_theme_font_override("font", _chinese_font)
+			child.add_theme_font_override("font", font)
 		if child.get_child_count() > 0:
-			_set_font_recursive(child)
+			_apply_font_recursive(child, font)
 
 
 func _update_player_name() -> void:
