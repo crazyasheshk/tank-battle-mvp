@@ -1,58 +1,62 @@
-# 坦克对战 MVP
+# 🎮 坦克大战 Tank Battle
 
-一个极简的坦克射击游戏原型。
+使用 Godot 4.6 开发并导出为网页版的小游戏，希望大家喜欢！
 
-## 快速开始
+## 🕹️ 在线试玩
 
-1. 用 Godot 4.6.1 打开项目文件夹
-2. 点击运行按钮 (F5)
-3. 开始游戏！
+**[点击这里开始游戏](https://crazyasheshk.github.io/tank-battle-mvp/)**
 
-## 控制方式
+## 📝 游戏介绍
 
-| 按键 | 功能 |
-|-----|------|
-| W | 向上移动 |
-| S | 向下移动 |
-| A | 向左移动 |
-| D | 向右移动 |
-| 空格 | 射击 |
+这是一款经典的坦克对战游戏，使用 Godot 4.6 引擎开发。玩家控制坦克消灭敌人，体验紧张刺激的战斗！
 
-## 游戏目标
+## 🎯 游戏特色
 
-击中目标 3 次，观看胜利烟花！🎉
+- 🌐 **网页版游戏** - 无需下载，打开浏览器即可畅玩
+- 🎨 **简洁画风** - 清爽的视觉效果
+- 🎮 **流畅操作** - 响应迅速的控制体验
+- 🚀 **持续更新** - 希望有时间不断完善游戏内容
 
-## 项目结构
+## 🛠️ 技术栈
 
-```
-tank-battle-mvp/
-├── project.godot      # 项目配置
-├── scenes/            # 场景文件
-│   ├── Main.tscn      # 主场景
-│   ├── Player.tscn    # 玩家坦克
-│   ├── Bullet.tscn    # 子弹
-│   ├── Target.tscn    # 目标
-│   └── VictoryEffect.tscn  # 胜利特效
-├── scripts/           # GDScript 脚本
-│   ├── Player.gd
-│   ├── Bullet.gd
-│   ├── Target.gd
-│   ├── GameManager.gd
-│   ├── VictoryEffect.gd
-│   └── Main.gd
-└── assets/            # 资源文件（预留）
+- **游戏引擎**: Godot 4.6.1
+- **编程语言**: GDScript
+- **导出平台**: HTML5/WebAssembly
+- **托管平台**: GitHub Pages
+
+## 📦 本地运行
+
+如果你想在本地运行或修改游戏：
+
+1. 克隆仓库
+```bash
+git clone https://github.com/crazyasheshk/tank-battle-mvp.git
+cd tank-battle-mvp
 ```
 
-## 技术细节
+2. 使用 Godot 4.6+ 打开项目
+```bash
+godot project.godot
+```
 
-- **玩家**: CharacterBody2D，使用 `get_vector()` 获取四向输入
-- **子弹**: Area2D，直线运动，碰撞检测
-- **目标**: Area2D，血量系统，受击反馈
-- **胜利特效**: CPUParticles2D，代码配置烟花效果
+3. 或者运行本地 Web 服务器
+```bash
+./start-web-server.sh
+# 访问 http://localhost:8890
+```
 
-## 下一步
+## 🚀 部署
 
-- 添加音效
-- 添加敌人 AI
-- 多关卡系统
-- 网络对战
+游戏使用 GitHub Pages 自动部署。每次推送到 main 分支后，会自动更新线上版本。
+
+## 📄 开源协议
+
+本项目采用 MIT 协议开源。
+
+## 💬 反馈与建议
+
+如果你有任何建议或发现了 bug，欢迎提 Issue！
+
+---
+
+⭐ 如果你喜欢这个游戏，欢迎给个 Star！
