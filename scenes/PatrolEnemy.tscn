@@ -1,0 +1,58 @@
+[gd_scene load_steps=3 format=3 uid="uid://patrol_enemy_scene"]
+
+[ext_resource type="Script" path="res://scripts/PatrolEnemy.gd" id="1_patrol"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1"]
+size = Vector2(40, 40)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1"]
+radius = 350.0
+
+[node name="PatrolEnemy" type="CharacterBody2D" groups=["enemy"]]
+collision_layer = 2
+collision_mask = 5
+script = ExtResource("1_patrol")
+move_speed = 100.0
+patrol_speed = 80.0
+rotation_speed = 4.0
+max_health = 4
+damage = 1
+fire_rate = 2.0
+detection_range = 350.0
+attack_range = 250.0
+patrol_wait_time = 1.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_1")
+
+[node name="Body" type="ColorRect" parent="."]
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+color = Color(0.9, 0.7, 0.1, 1)
+
+[node name="Turret" type="ColorRect" parent="."]
+offset_left = -5.0
+offset_top = -6.0
+offset_right = 25.0
+offset_bottom = 6.0
+color = Color(0.7, 0.5, 0.05, 1)
+
+[node name="Muzzle" type="Marker2D" parent="."]
+position = Vector2(30, 0)
+
+[node name="HealthBar" type="ProgressBar" parent="."]
+offset_left = -20.0
+offset_top = -35.0
+offset_right = 20.0
+offset_bottom = -28.0
+value = 100.0
+show_percentage = false
+
+[node name="DetectionArea" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea"]
+shape = SubResource("CircleShape2D_1")

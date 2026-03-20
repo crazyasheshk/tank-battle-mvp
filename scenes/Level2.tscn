@@ -1,0 +1,50 @@
+[gd_scene load_steps=9 format=3 uid="uid://level2_scene"]
+
+[ext_resource type="Script" path="res://scripts/LevelController.gd" id="1_level"]
+[ext_resource type="PackedScene" uid="uid://player_scene" path="res://scenes/Player.tscn" id="2_player"]
+[ext_resource type="PackedScene" uid="uid://target_scene" path="res://scenes/Target.tscn" id="3_target"]
+[ext_resource type="PackedScene" uid="uid://victory_scene" path="res://scenes/VictoryEffect.tscn" id="4_victory"]
+[ext_resource type="PackedScene" uid="uid://enemy_scene" path="res://scenes/Enemy.tscn" id="5_enemy"]
+[ext_resource type="PackedScene" uid="uid://game_ui" path="res://scenes/GameUI.tscn" id="6_ui"]
+[ext_resource type="PackedScene" uid="uid://patrol_enemy_scene" path="res://scenes/PatrolEnemy.tscn" id="7_patrol"]
+[ext_resource type="PackedScene" uid="uid://powerup_scene" path="res://scenes/Powerup.tscn" id="8_powerup"]
+
+[node name="Level2" type="Node2D"]
+script = ExtResource("1_level")
+victory_effect_scene = ExtResource("4_victory")
+level_number = 2
+
+[node name="Background" type="ColorRect" parent="."]
+offset_right = 1152.0
+offset_bottom = 648.0
+color = Color(0.08, 0.1, 0.12, 1)
+
+[node name="Player" parent="." instance=ExtResource("2_player")]
+position = Vector2(200, 324)
+
+[node name="Enemy1" parent="." instance=ExtResource("5_enemy")]
+position = Vector2(400, 150)
+is_guard = false
+
+[node name="Enemy2" parent="." instance=ExtResource("5_enemy")]
+position = Vector2(400, 500)
+is_guard = false
+
+[node name="EnemyGuard" parent="." instance=ExtResource("5_enemy")]
+position = Vector2(750, 324)
+is_guard = true
+guard_position = Vector2(750, 324)
+guard_radius = 150.0
+
+[node name="PatrolEnemy" parent="." instance=ExtResource("7_patrol")]
+position = Vector2(576, 324)
+patrol_points = [Vector2(450, 324), Vector2(700, 324)]
+powerup_scene = ExtResource("8_powerup")
+
+[node name="Target" parent="." instance=ExtResource("3_target")]
+position = Vector2(1000, 324)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(576, 324)
+
+[node name="GameUI" parent="." instance=ExtResource("6_ui")]

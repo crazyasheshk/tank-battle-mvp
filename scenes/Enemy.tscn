@@ -7,7 +7,7 @@
 size = Vector2(40, 40)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_detection"]
-radius = 300.0
+radius = 400.0
 
 [node name="Enemy" type="CharacterBody2D"]
 collision_layer = 2
@@ -19,7 +19,7 @@ rotation_speed = 3.0
 max_health = 3
 damage = 1
 fire_rate = 1.5
-detection_range = 300.0
+detection_range = 400.0
 attack_range = 200.0
 is_guard = false
 guard_radius = 100.0

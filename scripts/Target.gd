@@ -5,6 +5,7 @@ extends Area2D
 
 #region 信号
 signal destroyed
+signal damage_blocked
 #endregion
 
 #region 配置参数
@@ -33,12 +34,19 @@ func _update_health_bar() -> void:
 
 
 func take_damage(amount: int) -> void:
-	_current_health -= amount
-	_update_health_bar()
-	_play_hit_effect()
-	
-	if _current_health <= 0:
-		_die()
+	# 检查是否可以攻击目标
+	if GameManager.is_target_attackable():
+		_current_health -= amount
+		_update_health_bar()
+		_play_hit_effect()
+		
+		if _current_health <= 0:
+			_die()
+	else:
+		# 目标无敌，显示提示
+		_play_blocked_effect()
+		damage_blocked.emit()
+		print("⚠️ 需要先消灭所有敌人才能攻击目标！")
 
 
 func _play_hit_effect() -> void:
@@ -48,8 +56,18 @@ func _play_hit_effect() -> void:
 		_visual.color = Color(0.8, 0.2, 0.2)
 
 
+func _play_blocked_effect() -> void:
+	"""无敌时被攻击的反馈"""
+	if _visual:
+		for i in range(2):
+			_visual.color = Color(0.5, 0.5, 0.5)
+			await get_tree().create_timer(0.1).timeout
+			_visual.color = Color(0.8, 0.2, 0.2)
+			await get_tree().create_timer(0.1).timeout
+
+
 func _die() -> void:
 	destroyed.emit()
-	GameManager.add_score(50)
+	GameManager.add_score(100)
 	GameManager.trigger_victory(global_position)
 	queue_free()

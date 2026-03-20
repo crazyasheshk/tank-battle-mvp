@@ -10,38 +10,92 @@ script = ExtResource("1_ui")
 offset_right = 1152.0
 offset_bottom = 60.0
 
-[node name="HealthLabel" type="Label" parent="TopBar"]
-offset_left = 20.0
-offset_top = 10.0
+[node name="PlayerNameLabel" type="Label" parent="TopBar"]
+offset_left = 10.0
+offset_top = 5.0
 offset_right = 100.0
-offset_bottom = 50.0
-theme_override_font_sizes/font_size = 24
+offset_bottom = 25.0
+theme_override_font_sizes/font_size = 16
+text = "玩家"
+
+[node name="LevelLabel" type="Label" parent="TopBar"]
+offset_left = 10.0
+offset_top = 30.0
+offset_right = 80.0
+offset_bottom = 55.0
+theme_override_font_sizes/font_size = 14
+text = "第 1 关"
+
+[node name="HealthLabel" type="Label" parent="TopBar"]
+offset_left = 90.0
+offset_top = 28.0
+offset_right = 170.0
+offset_bottom = 55.0
+theme_override_font_sizes/font_size = 20
 text = "HP: 5/5"
 
+[node name="PowerupLabel" type="Label" parent="TopBar"]
+offset_left = 180.0
+offset_top = 30.0
+offset_right = 260.0
+offset_bottom = 55.0
+theme_override_font_sizes/font_size = 16
+text = ""
+horizontal_alignment = 1
+
+[node name="EnemiesLabel" type="Label" parent="TopBar"]
+anchors_preset = 4
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -80.0
+offset_top = 5.0
+offset_right = 80.0
+offset_bottom = 25.0
+theme_override_font_sizes/font_size = 16
+text = "敌人: 3"
+horizontal_alignment = 1
+
 [node name="TimerLabel" type="Label" parent="TopBar"]
-anchors_preset = 8
+anchors_preset = 4
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -50.0
-offset_top = -20.0
+offset_top = 25.0
 offset_right = 50.0
-offset_bottom = 20.0
-theme_override_font_sizes/font_size = 28
+offset_bottom = 55.0
+theme_override_font_sizes/font_size = 22
 text = "Time: 40s"
 horizontal_alignment = 1
 
 [node name="ScoreLabel" type="Label" parent="TopBar"]
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -200.0
+offset_left = -150.0
 offset_top = 10.0
 offset_right = -20.0
 offset_bottom = 50.0
 theme_override_font_sizes/font_size = 24
 text = "Score: 0"
 horizontal_alignment = 2
+
+[node name="HintPanel" type="Panel" parent="."]
+offset_left = 10.0
+offset_top = 70.0
+offset_right = 280.0
+offset_bottom = 110.0
+
+[node name="HintText" type="Label" parent="HintPanel"]
+offset_left = 10.0
+offset_top = 5.0
+offset_right = 260.0
+offset_bottom = 35.0
+theme_override_font_sizes/font_size = 16
+text = "🔒 还需消灭 3 个敌人"
+horizontal_alignment = 1
 
 [node name="Instructions" type="Panel" parent="."]
 offset_left = 10.0
@@ -156,9 +210,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -200.0
-offset_top = -100.0
+offset_top = -200.0
 offset_right = 200.0
-offset_bottom = 100.0
+offset_bottom = -40.0
 
 [node name="Title" type="Label" parent="VictoryPanel"]
 layout_mode = 1
@@ -166,11 +220,11 @@ anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -100.0
-offset_top = 20.0
+offset_top = 15.0
 offset_right = 100.0
-offset_bottom = 60.0
+offset_bottom = 55.0
 theme_override_font_sizes/font_size = 32
-text = "VICTORY!"
+text = "🎉 VICTORY!"
 horizontal_alignment = 1
 
 [node name="Score" type="Label" parent="VictoryPanel"]
@@ -179,9 +233,73 @@ anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -100.0
-offset_top = 70.0
+offset_top = 55.0
 offset_right = 100.0
-offset_bottom = 100.0
+offset_bottom = 85.0
 theme_override_font_sizes/font_size = 20
-text = "Score: 0"
+text = "得分: 0"
 horizontal_alignment = 1
+
+[node name="Time" type="Label" parent="VictoryPanel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -100.0
+offset_top = 85.0
+offset_right = 100.0
+offset_bottom = 115.0
+theme_override_font_sizes/font_size = 20
+text = "用时: 0:00"
+horizontal_alignment = 1
+
+[node name="Rank" type="Label" parent="VictoryPanel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -100.0
+offset_top = 115.0
+offset_right = 100.0
+offset_bottom = 145.0
+theme_override_font_sizes/font_size = 22
+text = ""
+horizontal_alignment = 1
+
+[node name="RestartHint" type="Label" parent="VictoryPanel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -100.0
+offset_top = 150.0
+offset_right = 100.0
+offset_bottom = 170.0
+theme_override_font_sizes/font_size = 14
+text = "F7 重新开始"
+horizontal_alignment = 1
+
+[node name="LeaderboardPanel" type="Panel" parent="."]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -200.0
+offset_top = 50.0
+offset_right = 200.0
+offset_bottom = 320.0
+
+[node name="ScrollContainer" type="ScrollContainer" parent="LeaderboardPanel"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = 10.0
+offset_right = -10.0
+offset_bottom = -10.0
+
+[node name="LeaderboardList" type="VBoxContainer" parent="LeaderboardPanel/ScrollContainer"]
+size_flags_horizontal = 3
+size_flags_vertical = 3
