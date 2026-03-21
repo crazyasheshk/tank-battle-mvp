@@ -21,6 +21,11 @@ run/main_scene="res://scenes/StartScreen.tscn"
 GameManager="*res://scripts/GameManager.gd"
 Leaderboard="*res://scripts/Leaderboard.gd"
 
+[gui]
+
+theme/custom="res://themes/game_theme.tres"
+theme/custom_font="res://fonts/NotoSansSC-Regular.ttf"
+
 [input]
 
 move_up={
