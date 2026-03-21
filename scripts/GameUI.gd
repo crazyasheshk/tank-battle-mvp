@@ -76,7 +76,7 @@ func _update_hint() -> void:
 			_hint_label.modulate = Color.GREEN
 		else:
 			var remaining := GameManager.total_enemies - GameManager.enemies_killed
-			_hint_label.text = "🔒 还需消灭 %d 个敌人" % remaining
+			_hint_label.text = "[锁定] 还需消灭 %d 个敌人" % remaining
 			_hint_label.modulate = Color.YELLOW
 
 
