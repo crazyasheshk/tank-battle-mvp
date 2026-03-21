@@ -2,8 +2,8 @@
 ## 游戏界面控制器
 extends CanvasLayer
 
-# 预加载字体路径
-const CHINESE_FONT_PATH := "res://fonts/NotoSansSC-Regular.ttf"
+# 预加载字体（编译时嵌入，确保 Web 端可用）
+var _chinese_font: FontFile = preload("res://fonts/NotoSansSC-Regular.ttf")
 
 @onready var _health_label: Label = $TopBar/HealthLabel
 @onready var _score_label: Label = $TopBar/ScoreLabel
@@ -49,10 +49,11 @@ func _ready() -> void:
 
 
 func _setup_chinese_font() -> void:
-	var font := ResourceLoader.load(CHINESE_FONT_PATH, "FontFile", ResourceLoader.CACHE_MODE_REPLACE) as FontFile
-	if font:
-		_apply_font_recursive(self, font)
-		print("✅ 游戏界面字体已应用")
+	if _chinese_font:
+		_apply_font_recursive(self, _chinese_font)
+		print("✅ GameUI: 中文字体已应用")
+	else:
+		push_error("❌ 无法加载中文字体！")
 
 
 func _apply_font_recursive(node: Node, font: FontFile) -> void:

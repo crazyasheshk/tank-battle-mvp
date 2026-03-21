@@ -2,8 +2,8 @@
 ## 游戏开始界面 - 输入姓名后开始游戏
 extends Control
 
-# 预加载字体（编译时嵌入）
-const CHINESE_FONT_PATH := "res://fonts/NotoSansSC-Regular.ttf"
+# 预加载字体（编译时嵌入，确保 Web 端可用）
+var _chinese_font: FontFile = preload("res://fonts/NotoSansSC-Regular.ttf")
 
 @onready var _name_input: LineEdit = $NameInput
 @onready var _start_button: Button = $StartButton
@@ -19,11 +19,11 @@ func _ready() -> void:
 
 
 func _setup_chinese_font() -> void:
-	# 使用 ResourceLoader.load 确保同步加载
-	var font := ResourceLoader.load(CHINESE_FONT_PATH, "FontFile", ResourceLoader.CACHE_MODE_REPLACE) as FontFile
-	if font:
-		_apply_font_recursive(self, font)
-		print("✅ 中文字体已应用")
+	if _chinese_font:
+		_apply_font_recursive(self, _chinese_font)
+		print("✅ StartScreen: 中文字体已应用")
+	else:
+		push_error("❌ 无法加载中文字体！")
 
 
 func _apply_font_recursive(node: Node, font: FontFile) -> void:
