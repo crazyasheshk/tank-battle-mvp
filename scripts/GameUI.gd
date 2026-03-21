@@ -72,7 +72,7 @@ func _update_player_name() -> void:
 func _update_hint() -> void:
 	if _hint_label:
 		if GameManager.is_target_attackable():
-			_hint_label.text = "🎯 目标已解锁！"
+			_hint_label.text = "[目标] 已解锁！"
 			_hint_label.modulate = Color.GREEN
 		else:
 			var remaining := GameManager.total_enemies - GameManager.enemies_killed
@@ -123,7 +123,7 @@ func _update_level() -> void:
 func _update_powerup_status() -> void:
 	if _powerup_label:
 		if GameManager.has_shotgun:
-			_powerup_label.text = "🔫 散弹"
+			_powerup_label.text = "[散弹]"
 			_powerup_label.modulate = Color.ORANGE
 		else:
 			_powerup_label.text = ""
@@ -143,7 +143,7 @@ func _show_victory() -> void:
 	_victory_score.text = "得分: %d" % GameManager.score
 	_victory_time.text = "用时: " + Leaderboard.format_time(GameManager.last_completion_time)
 	if GameManager.last_rank > 0:
-		_victory_rank.text = "🏆 排名: 第 %d 名" % GameManager.last_rank
+		_victory_rank.text = "★ 排名: 第 %d 名" % GameManager.last_rank
 		_victory_rank.modulate = Color.GOLD if GameManager.last_rank <= 3 else Color.WHITE
 	else:
 		_victory_rank.text = ""
@@ -163,7 +163,7 @@ func _show_leaderboard(highlight_rank: int) -> void:
 	
 	# 添加标题
 	var title := Label.new()
-	title.text = "🏆 世界排行榜"
+	title.text = "★ 世界排行榜"
 	title.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	title.add_theme_font_size_override("font_size", 24)
 	_leaderboard_list.add_child(title)
@@ -188,9 +188,9 @@ func _show_leaderboard(highlight_rank: int) -> void:
 			var entry_label := Label.new()
 			var medal := ""
 			match rank_num:
-				1: medal = "🥇 "
-				2: medal = "🥈 "
-				3: medal = "🥉 "
+				1: medal = "[1] "
+				2: medal = "[2] "
+				3: medal = "[3] "
 				_: medal = "%d. " % rank_num
 			
 			entry_label.text = "%s%s - %s | %d分" % [

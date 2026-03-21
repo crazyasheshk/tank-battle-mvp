@@ -30,7 +30,7 @@ offset_top = 100.0
 offset_right = 200.0
 offset_bottom = 180.0
 theme_override_font_sizes/font_size = 48
-text = "🎮 坦克对战 MVP"
+text = "【坦克对战】MVP"
 horizontal_alignment = 1
 
 [node name="Subtitle" type="Label" parent="."]

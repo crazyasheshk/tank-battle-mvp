@@ -114,7 +114,7 @@ func _update_health_bar() -> void:
 func _update_powerup_indicator() -> void:
 	if _powerup_indicator:
 		if GameManager.has_shotgun:
-			_powerup_indicator.text = "🔫 散弹"
+			_powerup_indicator.text = "[散弹]"
 			_powerup_indicator.visible = true
 		else:
 			_powerup_indicator.visible = false

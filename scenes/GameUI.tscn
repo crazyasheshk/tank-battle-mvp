@@ -224,7 +224,7 @@ offset_top = 15.0
 offset_right = 100.0
 offset_bottom = 55.0
 theme_override_font_sizes/font_size = 32
-text = "🎉 VICTORY!"
+text = "★ VICTORY!"
 horizontal_alignment = 1
 
 [node name="Score" type="Label" parent="VictoryPanel"]
